@@ -107,3 +107,19 @@
     flex: 1;
     outline: none;
 }
+
+@media (max-width: 768px) {
+    .terminal-window {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+        /* Reduced min-height */
+        max-height: 500px;
+    }
+
+    .terminal-body {
+        padding: 15px;
+        font-size: 0.8rem;
+        /* Smaller font */
+    }
+}

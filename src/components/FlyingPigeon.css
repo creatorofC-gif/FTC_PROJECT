@@ -14,3 +14,9 @@
 .pigeon-container:hover svg {
     transform: scale(1.2);
 }
+
+@media (max-width: 768px) {
+    .pigeon-container {
+        display: none;
+    }
+}

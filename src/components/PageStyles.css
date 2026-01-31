@@ -234,3 +234,68 @@
     font-size: 0.9rem;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .page-container {
+        padding: 6rem 1.5rem 2rem 1.5rem;
+        /* Reduced horizontal padding, kept top padding for navbar */
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .team-grid {
+        gap: 1.5rem;
+    }
+
+    .team-grid .card {
+        flex: 1 1 100%;
+        /* Full width cards on mobile */
+        max-width: 100%;
+    }
+
+    .team-grid .card.full-width-mobile {
+        flex: 1 1 100%;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .connect-grid {
+        gap: 2rem;
+    }
+
+    .connect-card {
+        width: 100%;
+        /* Full width connect cards */
+        max-width: 350px;
+    }
+
+    .list-item {
+        padding-left: 1.5rem;
+        border-left-width: 2px;
+    }
+
+    .list-item h2 {
+        font-size: 1.5rem;
+    }
+
+    .events-timeline {
+        padding-left: 1.5rem;
+    }
+
+    .event-item::before {
+        left: -1.85rem;
+        /* Re-center dot */
+    }
+
+    .back-btn {
+        margin-bottom: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

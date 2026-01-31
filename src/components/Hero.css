@@ -119,8 +119,10 @@
 @media (max-width: 1024px) {
     .hero-section {
         flex-direction: column;
-        padding: 2rem;
+        padding: 4rem 2rem;
+        /* Adjusted padding */
         text-align: center;
+        gap: 3rem;
     }
 
     .hero-content,
@@ -136,5 +138,57 @@
 
     .hero-desc {
         margin: 0 auto 2rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        /* Smaller title */
+        margin-bottom: 1rem;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        /* Full width buttons on mobile */
+        padding: 0.8rem 1.5rem;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .stat-item {
+        flex: 1 1 40%;
+        /* 2 per row approx */
+    }
+
+    .stat-item h3 {
+        font-size: 1.5rem;
     }
 }

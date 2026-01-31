@@ -81,7 +81,7 @@ const Terminal = () => {
                     <span className="minimize" />
                     <span className="maximize" />
                 </div>
-                <div className="title">ftc-terminal (Interative)</div>
+                <div className="title">ftc-terminal (Interactive)</div>
             </div>
             <div className="terminal-body">
                 {history.map((line, idx) => (
