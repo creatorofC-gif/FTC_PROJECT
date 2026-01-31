@@ -1,0 +1,109 @@
+.terminal-window {
+    width: 100%;
+    max-width: 700px;
+    /* Increased from 500px */
+    background-color: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 163, 0.05);
+    /* Subtle green glow */
+    overflow: hidden;
+    font-family: var(--font-mono);
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    /* Increased from 350px */
+}
+
+.terminal-header {
+    background-color: #1a1a1a;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.buttons .close {
+    background-color: #ff5f56;
+}
+
+.buttons .minimize {
+    background-color: #ffbd2e;
+}
+
+.buttons .maximize {
+    background-color: #27c93f;
+}
+
+.title {
+    margin-left: 20px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.terminal-body {
+    padding: 20px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex: 1;
+    overflow-y: auto;
+    cursor: text;
+}
+
+.line {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.line.command .prompt {
+    color: var(--accent-green);
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.line.output {
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    padding-left: 0;
+}
+
+.line.error {
+    color: #ff5f56;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.input-line .prompt {
+    color: var(--accent-green);
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    flex: 1;
+    outline: none;
+}

@@ -1,0 +1,16 @@
+.pigeon-container {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    z-index: 100;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.pigeon-container svg {
+    transition: transform 0.2s;
+}
+
+.pigeon-container:hover svg {
+    transform: scale(1.2);
+}

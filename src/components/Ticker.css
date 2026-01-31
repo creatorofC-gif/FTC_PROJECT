@@ -1,0 +1,47 @@
+.ticker-wrapper {
+    width: 100%;
+    background-color: #000;
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 20;
+}
+
+.ticker-content {
+    display: inline-flex;
+    gap: 3rem;
+    padding-left: 3rem;
+    /* We will clone this later or just ensure enough items */
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.symbol {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.price {
+    color: var(--text-primary);
+}
+
+.change {
+    font-weight: bold;
+}
+
+.change.up {
+    color: var(--accent-green);
+}
+
+.change.down {
+    color: #ff3333;
+}
