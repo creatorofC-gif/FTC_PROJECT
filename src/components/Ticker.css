@@ -22,26 +22,30 @@
 .ticker-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
 }
 
-.symbol {
-    color: var(--text-secondary);
-    font-weight: 600;
+.status-word {
+    font-weight: 500;
 }
 
-.price {
-    color: var(--text-primary);
+.status-item.red .status-word {
+    color: #ff3333;
 }
 
-.change {
-    font-weight: bold;
-}
-
-.change.up {
+.status-item.green .status-word {
     color: var(--accent-green);
 }
 
-.change.down {
+.trend-indicator {
+    font-size: 0.7rem;
+    line-height: 1;
+}
+
+.trend-indicator.up {
+    color: var(--accent-green);
+}
+
+.trend-indicator.down {
     color: #ff3333;
 }

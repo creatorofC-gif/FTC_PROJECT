@@ -42,17 +42,18 @@ const FlyingPigeon = () => {
         return () => tl.kill();
     }, []);
 
-    const handleClick = () => {
-        // Redirect
-        navigate('/mystery'); // Example page
-        alert('You caught the pigeon! Redirecting...');
+    const handleClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // Redirect to LinkedIn profile
+        window.open('https://www.linkedin.com/in/shrish-alva-a3135a31b/?originalSubdomain=in', '_blank', 'noopener,noreferrer');
     };
 
     return (
-        <div className="pigeon-container" ref={birdRef} onClick={handleClick}>
-            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="pigeon-container" ref={birdRef} onClick={handleClick} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e); }}>
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ pointerEvents: 'none' }}>
                 <g className="bird-body">
-                    {/* Simple white dove/pigeon shape */}
+                    {/* Simple white dove/pigeon shape - smaller size */}
                     <path d="M10,50 Q30,20 60,40 Q90,50 80,70 Q60,90 30,70 Q10,80 10,50 Z" fill="white" opacity="0.9" />
                     <circle cx="70" cy="45" r="3" fill="black" />
                     <path className="wing" d="M30,50 Q50,10 70,50 Z" fill="#e0e0e0" />

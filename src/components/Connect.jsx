@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
-import { Linkedin, Instagram, Mail } from 'lucide-react';
+import { Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
 import Background from './Background';
 import './PageStyles.css';
 
@@ -25,22 +25,28 @@ const Connect = () => {
             <h1 className="page-title">Connect <span className="highlight">With Us</span></h1>
 
             <div className="connect-grid">
-                <a href="https://www.linkedin.com/company/finance-tech-club-kjsse" target="_blank" rel="noopener noreferrer" className="connect-card">
+                <a href="https://www.linkedin.com/company/ftckjsse/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="connect-card">
                     <Linkedin size={48} color="#0077b5" />
                     <h3>LinkedIn</h3>
-                    <p>Professional updates & network</p>
+                    <p>FTC</p>
                 </a>
 
                 <a href="https://www.instagram.com/ftc.kjsse" target="_blank" rel="noopener noreferrer" className="connect-card">
                     <Instagram size={48} color="#E1306C" />
                     <h3>Instagram</h3>
-                    <p>Event highlights & culture</p>
+                    <p>ftc.kjsse</p>
                 </a>
 
-                <a href="mailto:ftc@somaiya.edu" className="connect-card">
+                <a href="mailto:ftc@kjsse.edu" className="connect-card">
                     <Mail size={48} color="#00ffa3" />
                     <h3>Email</h3>
-                    <p>Collaborations & inquiries</p>
+                    <p>ftc@kjsse.edu</p>
+                </a>
+
+                <a href="https://www.google.com/maps/search/K+J+Somaiya+College+of+Engineering" target="_blank" rel="noopener noreferrer" className="connect-card">
+                    <MapPin size={48} color="#00ffa3" />
+                    <h3>Location</h3>
+                    <p>K J Somaiya School of Engineering</p>
                 </a>
             </div>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Terminal from './Terminal';
 import './Hero.css';
+import whatsappImg from '../assets/WhatsApp_Image_2026-02-01_at_12.27.03-removebg-preview.png';
 
 const Hero = () => {
     const heroRef = useRef(null);
@@ -9,7 +10,7 @@ const Hero = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, delay: 0.2 });
-            gsap.from('.hero-title', { y: 30, opacity: 0, duration: 0.8, delay: 0.4 });
+            gsap.from('.hero-logo-img', { y: 30, opacity: 0, duration: 0.8, delay: 0.4 });
             gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.8, delay: 0.6 });
             gsap.from('.hero-actions', { y: 30, opacity: 0, duration: 0.8, delay: 0.8 });
             gsap.from('.hero-stats', { y: 30, opacity: 0, duration: 0.8, delay: 1.0 });
@@ -22,17 +23,14 @@ const Hero = () => {
         <section className="hero-section" ref={heroRef}>
             <div className="hero-content">
                 <div className="hero-badge">Est. 2024</div>
-                <h1 className="hero-title">
-                    FINANCE &<br />
-                    <span className="highlight">TECH CLUB</span>
-                </h1>
+                <img src={whatsappImg} alt="Finance & Tech Club" className="hero-logo-img" />
                 <p className="hero-desc">
                     An execution-driven student body operating across markets,
                     capital, and financial technology at K J Somaiya School of
                     Engineering.
                 </p>
 
-                {/* Actions and Stats removed as per request */}
+
             </div>
 
             <div className="hero-visual">

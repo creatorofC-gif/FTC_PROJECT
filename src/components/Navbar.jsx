@@ -23,7 +23,6 @@ const Navbar = () => {
     return (
         <nav className="navbar" ref={navRef}>
             <div className="logo">
-                <span className="ftc">FTC<span className="kjsse" style={{ marginLeft: '0' }}> KJSSE</span></span>
                 <div className="sub-info">
                     <span>Mumbai</span>
                     <span className="separator">•</span>

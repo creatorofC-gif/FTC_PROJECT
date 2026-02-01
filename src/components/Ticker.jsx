@@ -2,13 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './Ticker.css';
 
-const tickerData = [
-    { symbol: 'SENSEX', price: '78,782.24', change: '+1.89%', up: true },
-    { symbol: 'BTC/USD', price: '95,234.5', change: '-1.23%', up: false },
-    { symbol: 'ETH/USD', price: '3,421.18', change: '+3.45%', up: true },
-    { symbol: 'RELIANCE', price: '1,285.45', change: '+0.87%', up: true },
-    { symbol: 'TCS', price: '4,123.9', change: '-0.45%', up: false },
-    { symbol: 'NIFTY 50', price: '23,847.9', change: '+2.34%', up: true },
+const statusItems = [
+    { word: 'DOUBT', color: 'red', trend: 'down' },
+    { word: 'LEARNING', color: 'green', trend: 'up' },
+    { word: 'NOISE', color: 'red', trend: 'down' },
+    { word: 'FOCUS', color: 'green', trend: 'up' },
+    { word: 'COMPLACENCY', color: 'red', trend: 'down' },
+    { word: 'CONSISTENCY', color: 'green', trend: 'up' },
+    { word: 'FEAR', color: 'red', trend: null },
+    { word: 'CONFIDENCE', color: 'green', trend: 'up' },
+    { word: 'FAILURES', color: 'red', trend: 'down' },
+    { word: 'DISCIPLINE', color: 'green', trend: 'up' },
+    { word: 'RISK', color: 'red', trend: 'down' },
+    { word: 'EXECUTION', color: 'green', trend: null },
 ];
 
 const Ticker = () => {
@@ -37,16 +43,16 @@ const Ticker = () => {
     return (
         <div className="ticker-wrapper" ref={tickerRef}>
             <div className="ticker-content">
-                {tickerData.map((item, index) => (
-                    <div className="ticker-item" key={index}>
-                        <span className="symbol">{item.symbol}</span>
-                        <span className="price">{item.price}</span>
-                        <span className={`change ${item.up ? 'up' : 'down'}`}>
-                            {item.change}
-                        </span>
+                {statusItems.map((item, index) => (
+                    <div className={`ticker-item status-item ${item.color}`} key={index}>
+                        <span className="status-word">{item.word}</span>
+                        {item.trend && (
+                            <span className={`trend-indicator ${item.trend}`}>
+                                {item.trend === 'up' ? '▲' : '▼'}
+                            </span>
+                        )}
                     </div>
                 ))}
-                {/* Duplicate for seamless loop if needed logic, but GSAP duplicate approach above handles it lightly or we render twice here */}
             </div>
         </div>
     );
