@@ -191,6 +191,11 @@
     font-size: 0.9rem;
 }
 
+.date-wrapper {
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
 /* Connect Grid Styles */
 .connect-grid {
     display: flex;

@@ -5,7 +5,7 @@ import './Terminal.css';
 const Terminal = () => {
     const [history, setHistory] = useState([
         { type: 'output', text: 'Welcome to FTC Terminal v1.0.0' },
-        { type: 'output', text: 'Available commands:\n  > team     - View core committee & developers\n  > domains  - Explore our operational domains\n  > events   - Upcoming hackathons & workshops\n  > connect  - Socials & contact info\n  > clear    - Clear terminal' }
+        { type: 'output', text: 'Available commands:\n  > team     - View core committee & developers\n  > domains  - Explore our operational domains\n  > events   - Upcoming hackathons & workshops\n  > connect  - Socials & contact info\n  > tools    - Financial calculators & simulators\n  > clear    - Clear terminal' }
     ]);
     const [input, setInput] = useState('');
     const bottomRef = useRef(null);
@@ -30,7 +30,7 @@ const Terminal = () => {
             case 'help':
                 newHistory.push({
                     type: 'output',
-                    text: 'Available commands:\n  > team     - View core committee & developers\n  > domains  - Explore our operational domains\n  > events   - Upcoming hackathons & workshops\n  > connect  - Socials & contact info\n  > clear    - Clear terminal'
+                    text: 'Available commands:\n  > team     - View core committee & developers\n  > domains  - Explore our operational domains\n  > events   - Upcoming hackathons & workshops\n  > connect  - Socials & contact info\n  > tools    - Financial calculators & simulators\n  > clear    - Clear terminal'
                 });
                 setHistory(newHistory);
                 break;
@@ -53,6 +53,11 @@ const Terminal = () => {
                 newHistory.push({ type: 'output', text: 'Establishing secure connection...' });
                 setHistory(newHistory);
                 setTimeout(() => navigate('/connect'), 800);
+                break;
+            case 'tools':
+                newHistory.push({ type: 'output', text: 'Loading Financial Toolkit...' });
+                setHistory(newHistory);
+                setTimeout(() => navigate('/tools'), 800);
                 break;
             case 'clear':
                 setHistory([]);
