@@ -10,12 +10,14 @@
     pointer-events: auto;
 }
 
-.pigeon-container svg {
+.pigeon-emoji {
+    font-size: 28px;
+    display: block;
     transition: transform 0.2s;
 }
 
-.pigeon-container:hover svg {
-    transform: scale(1.2);
+.pigeon-container:hover .pigeon-emoji {
+    transform: scale(1.1);
 }
 
 @media (max-width: 768px) {

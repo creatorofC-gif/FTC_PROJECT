@@ -83,6 +83,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
 }
 
 .card:hover {
@@ -130,6 +133,35 @@
     border-radius: 2px;
     margin-left: 5px;
     vertical-align: middle;
+}
+
+.team-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.team-link:hover {
+    color: var(--accent-green);
+}
+
+.team-link:hover .icon {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+.card p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .reps-list {

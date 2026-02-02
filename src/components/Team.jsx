@@ -27,13 +27,29 @@ const Team = () => {
                 {/* Row 1: Mentors & Founders */}
                 <div className="card full-width-mobile">
                     <h3>FACULTY MENTORS</h3>
-                    <p>Dr. Vaibhav Prakash Vasani <span className="icon">in</span></p>
-                    <p>Mr. Swapnil Pawar <span className="icon">in</span></p>
+                    <p style={{ position: 'relative', zIndex: 10 }}>
+                        <a href="https://www.linkedin.com/in/dr-vaibhav-vasani-phd-460a4162/" target="_blank" rel="noopener noreferrer" className="team-link" onClick={(e) => e.stopPropagation()}>
+                            Dr. Vaibhav Prakash Vasani <span className="icon">in</span>
+                        </a>
+                    </p>
+                    <p style={{ position: 'relative', zIndex: 10 }}>
+                        <a href="https://www.linkedin.com/in/swapnil-pawar-60144b23/" target="_blank" rel="noopener noreferrer" className="team-link" onClick={(e) => e.stopPropagation()}>
+                            Mr. Swapnil Pawar <span className="icon">in</span>
+                        </a>
+                    </p>
                 </div>
                 <div className="card full-width-mobile">
                     <h3>FOUNDERS</h3>
-                    <p>Jeh Dadina <span className="icon">in</span></p>
-                    <p>Vansh Dang <span className="icon">in</span></p>
+                    <p style={{ position: 'relative', zIndex: 10 }}>
+                        <a href="https://www.linkedin.com/in/jehdadina/" target="_blank" rel="noopener noreferrer" className="team-link" onClick={(e) => e.stopPropagation()}>
+                            Jeh Dadina <span className="icon">in</span>
+                        </a>
+                    </p>
+                    <p style={{ position: 'relative', zIndex: 10 }}>
+                        <a href="https://www.linkedin.com/in/vansh-dang/" target="_blank" rel="noopener noreferrer" className="team-link" onClick={(e) => e.stopPropagation()}>
+                            Vansh Dang <span className="icon">in</span>
+                        </a>
+                    </p>
                 </div>
 
                 {/* Row 2: Domains */}
