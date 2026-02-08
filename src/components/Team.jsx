@@ -61,7 +61,7 @@ const Team = () => {
                         <p className="role-label">Members</p>
                         <p>Atharva Ghate</p>
                         <p>Chirayu Chandiramani</p>
-                        <p>Nikunj Rathee</p>
+                        <p>Nikunj Rathi</p>
                     </div>
                     <div className="card">
                         <h3>PRIVATE MARKETS</h3>

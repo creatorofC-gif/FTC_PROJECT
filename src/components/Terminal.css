@@ -58,9 +58,13 @@
     line-height: 1.6;
     flex: 1;
     overflow-y: auto;
-    cursor: text;
+    cursor: default;
     display: flex;
     flex-direction: column;
+    /* Ensure scrolling is smooth on iOS */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    /* Prevent pull-to-refresh on body */
 }
 
 .line {
@@ -106,7 +110,12 @@
     font-family: var(--font-mono);
     font-size: 0.9rem;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    /* Better touch experience */
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    /* Reduce accidental selections */
 }
 
 .terminal-btn:hover:not(:disabled) {

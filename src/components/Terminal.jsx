@@ -46,9 +46,6 @@ const Terminal = () => {
         // Prevent ghost clicks from previous page (e.g. Back button)
         const timer = setTimeout(() => setIsReady(true), 300);
 
-        if (terminalBodyRef.current) {
-            terminalBodyRef.current.scrollTop = 0;
-        }
         return () => {
             clearTimeout(timer);
             if (intervalRef.current) clearInterval(intervalRef.current);
@@ -111,10 +108,8 @@ const Terminal = () => {
                                     key={cmd.id}
                                     type="button"
                                     className={`terminal-btn ${clickedId === cmd.id ? 'terminal-btn--clicked' : ''}`}
-                                    onClick={(e) => {
-                                        e.preventDefault(); // Prevent default touch actions behavior
-                                        handleClick(cmd);
-                                    }}
+                                    onClick={() => handleClick(cmd)}
+                                    // Keep disabled logic but ensure it doesn't block scrolling physically
                                     disabled={!isReady || clickedId !== null}
                                 >
                                     <span className="prompt">$ </span>
