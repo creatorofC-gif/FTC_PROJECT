@@ -41,9 +41,7 @@ const Tools = () => {
             <div className="tools-grid">
                 <SipCalculator refProp={addToRefs} />
                 <RiskAnalyzer refProp={addToRefs} />
-                <StockCalculator refProp={addToRefs} />
                 <PortfolioSim refProp={addToRefs} />
-                <StartupValuator refProp={addToRefs} />
             </div>
         </div>
     );
@@ -202,66 +200,7 @@ const RiskAnalyzer = ({ refProp }) => {
     );
 }
 
-// --- 3. Stock Calculator with Sliding Bar ---
-const StockCalculator = ({ refProp }) => {
-    const [buy, setBuy] = useState(100);
-    const [curr, setCurr] = useState(120);
-    const [qty, setQty] = useState(10);
-
-    const diff = curr - buy;
-    const pnl = diff * qty;
-    const pct = (diff / buy) * 100;
-
-    // Bar Visualization
-    // We want a bar that goes left for negative, right for positive, from center
-    // Max visual range +/- 50%
-    const clampPct = Math.max(-50, Math.min(50, pct));
-    const barWidth = Math.abs(clampPct) * 2; // scale factor
-
-    return (
-        <div className="tool-card" ref={refProp}>
-            <div className="tool-header">
-                <div className="tool-icon-box">📊</div>
-                <span className="tool-title-text">Stock Returns</span>
-            </div>
-
-            <div className="control-group">
-                <div className="label-row"><span>Buy Price</span></div>
-                <input type="number" className="custom-input" value={buy} onChange={e => setBuy(+e.target.value)} />
-            </div>
-            <div className="control-group">
-                <div className="label-row"><span>Sell Price</span></div>
-                <input type="number" className="custom-input" value={curr} onChange={e => setCurr(+e.target.value)} />
-            </div>
-            <div className="control-group">
-                <div className="label-row"><span>Quantity</span></div>
-                <input type="number" className="custom-input" value={qty} onChange={e => setQty(+e.target.value)} />
-            </div>
-
-            <div className="chart-area" style={{ minHeight: '100px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <span>Return</span>
-                    <strong style={{ color: pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-pink)' }}>
-                        {pnl >= 0 ? '+' : ''}{fmt(pnl)} ({pct.toFixed(2)}%)
-                    </strong>
-                </div>
-
-                {/* Center-zero Bar Chart */}
-                <div className="pnl-bar-container">
-                    <div className="pnl-midline"></div>
-                    <div className="pnl-fill" style={{
-                        width: `${barWidth}%`,
-                        position: 'absolute',
-                        left: pnl >= 0 ? '50%' : `calc(50% - ${barWidth}%)`,
-                        backgroundColor: pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-pink)'
-                    }}></div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// --- 4. Portfolio with Donut Chart ---
+// --- 3. Portfolio with Donut Chart ---
 const PortfolioSim = ({ refProp }) => {
     const [eq, setEq] = useState(50);
     const [db, setDb] = useState(30);
@@ -362,59 +301,6 @@ const PortfolioSim = ({ refProp }) => {
                         value={ch} 
                         onChange={e => setCh(+e.target.value)} 
                     />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// --- 5. Startup Valuator with Rocket Anim ---
-const StartupValuator = ({ refProp }) => {
-    const [rev, setRev] = useState(500000);
-    const [growth, setGrowth] = useState(25);
-    const [multiple, setMultiple] = useState(8);
-
-    const val = rev * multiple;
-    const nextVal = val * (1 + growth / 100);
-
-    // Rocket position: 0% to 100% of height based on growth potential?
-    // Let's make it based on "Next Year Gain"
-    const gainPct = growth; // simplistic
-    const rocketBottom = Math.min(100, Math.max(0, gainPct * 1.5)); // scale visual
-
-    return (
-        <div className="tool-card" ref={refProp}>
-            <div className="tool-header">
-                <div className="tool-icon-box">🚀</div>
-                <span className="tool-title-text">Valuation Est.</span>
-            </div>
-
-            <div className="control-group">
-                <div className="label-row"><span>Revenue (ARR)</span> <span>{fmt(rev)}</span></div>
-                <input type="range" min="100000" max="10000000" step="100000" value={rev} onChange={e => setRev(+e.target.value)} className="custom-range" />
-            </div>
-
-            <div className="control-group">
-                <div className="label-row"><span>Growth Rate</span> <span>{growth}%</span></div>
-                <input type="range" min="0" max="200" value={growth} onChange={e => setGrowth(+e.target.value)} className="custom-range" />
-            </div>
-
-            <div className="control-group">
-                <div className="label-row"><span>Multiple</span> <span>{multiple}x</span></div>
-                <input type="range" min="1" max="50" value={multiple} onChange={e => setMultiple(+e.target.value)} className="custom-range" />
-            </div>
-
-            <div className="rocket-track">
-                {/* Base */}
-                <div className="rocket-marker" style={{ bottom: '0%' }}>
-                    <span style={{ fontSize: '1.2rem' }}>🏢</span>
-                    <div className="rocket-label">Now: {fmt(val)}</div>
-                </div>
-
-                {/* Moving Rocket */}
-                <div className="rocket-marker" style={{ bottom: `${rocketBottom}%` }}>
-                    <span className="rocket-icon">🚀</span>
-                    <div className="rocket-label" style={{ borderColor: 'var(--accent-green)' }}>Next: {fmt(nextVal)}</div>
                 </div>
             </div>
         </div>
