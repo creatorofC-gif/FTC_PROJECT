@@ -39,18 +39,25 @@ const Terminal = () => {
     const timeoutRef = React.useRef(null);
     const terminalBodyRef = React.useRef(null);
 
-    // Cleanup on unmount
+    const [isReady, setIsReady] = useState(false);
+
+    // Cleanup on unmount & Safety Delay
     useEffect(() => {
+        // Prevent ghost clicks from previous page (e.g. Back button)
+        const timer = setTimeout(() => setIsReady(true), 300);
+
         if (terminalBodyRef.current) {
             terminalBodyRef.current.scrollTop = 0;
         }
         return () => {
+            clearTimeout(timer);
             if (intervalRef.current) clearInterval(intervalRef.current);
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
     }, []);
 
     const handleClick = (cmd) => {
+        if (!isReady) return;
         if (clickedId !== null) return; // Prevent double clicks
 
         setClickedId(cmd.id);
@@ -108,7 +115,7 @@ const Terminal = () => {
                                         e.preventDefault(); // Prevent default touch actions behavior
                                         handleClick(cmd);
                                     }}
-                                    disabled={clickedId !== null}
+                                    disabled={!isReady || clickedId !== null}
                                 >
                                     <span className="prompt">$ </span>
                                     <span className="btn-label">{cmd.label}</span>
