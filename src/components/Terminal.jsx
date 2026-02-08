@@ -44,7 +44,8 @@ const Terminal = () => {
     // Cleanup on unmount & Safety Delay
     useEffect(() => {
         // Prevent ghost clicks from previous page (e.g. Back button)
-        const timer = setTimeout(() => setIsReady(true), 300);
+        // Wait for Hero animations (approx 1.2s) to finish before enabling interactions
+        const timer = setTimeout(() => setIsReady(true), 1200);
 
         return () => {
             clearTimeout(timer);

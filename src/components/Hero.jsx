@@ -9,12 +9,13 @@ const Hero = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, delay: 0.2 });
-            gsap.from('.hero-logo-img', { y: 30, opacity: 0, duration: 0.8, delay: 0.4 });
-            gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.8, delay: 0.6 });
-            gsap.from('.hero-actions', { y: 30, opacity: 0, duration: 0.8, delay: 0.8 });
-            gsap.from('.hero-stats', { y: 30, opacity: 0, duration: 0.8, delay: 1.0 });
-            gsap.from('.hero-visual', { x: 50, opacity: 0, duration: 1, delay: 0.5 });
+            gsap.from('.hero-badge', { opacity: 0, duration: 0.8, delay: 0.2 });
+            gsap.from('.hero-logo-img', { opacity: 0, duration: 0.8, delay: 0.4 });
+            gsap.from('.hero-desc', { opacity: 0, duration: 0.8, delay: 0.6 });
+            gsap.from('.hero-actions', { opacity: 0, duration: 0.8, delay: 0.8 });
+            gsap.from('.hero-stats', { opacity: 0, duration: 0.8, delay: 1.0 });
+            // Simplified animation to prevent scroll jumping
+            gsap.from('.hero-visual', { opacity: 0, duration: 1.2, delay: 0.2 });
         }, heroRef);
         return () => ctx.revert();
     }, []);
