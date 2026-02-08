@@ -22,7 +22,6 @@ const Hero = () => {
     return (
         <section className="hero-section" ref={heroRef}>
             <div className="hero-content">
-                <div className="hero-badge">Est. 2026</div>
                 <div className="hero-logo-block">
                     <img src={whatsappImg} alt="Finance & Tech Club" className="hero-logo-img" />
                     <p className="hero-sig">SIG SwDC</p>
