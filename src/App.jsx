@@ -5,7 +5,6 @@ import Ticker from './components/Ticker';
 import Hero from './components/Hero';
 import Background from './components/Background';
 import FlyingPigeon from './components/FlyingPigeon';
-
 import Team from './components/Team';
 import Domains from './components/Domains';
 import Events from './components/Events';

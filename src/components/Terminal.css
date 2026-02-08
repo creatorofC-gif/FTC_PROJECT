@@ -1,12 +1,10 @@
 .terminal-window {
     width: 100%;
     max-width: 700px;
-    /* Increased from 500px */
     background-color: rgba(10, 10, 10, 0.95);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 163, 0.05);
-    /* Subtle green glow */
     overflow: hidden;
     font-family: var(--font-mono);
     position: relative;
@@ -14,7 +12,6 @@
     display: flex;
     flex-direction: column;
     height: 450px;
-    /* Increased from 350px */
 }
 
 .terminal-header {
@@ -62,6 +59,8 @@
     flex: 1;
     overflow-y: auto;
     cursor: text;
+    display: flex;
+    flex-direction: column;
 }
 
 .line {
@@ -86,26 +85,178 @@
     color: #ff5f56;
 }
 
-.input-line {
+.terminal-buttons {
     display: flex;
-    align-items: center;
-    margin-top: 8px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
 }
 
-.input-line .prompt {
+.terminal-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: rgba(0, 255, 163, 0.06);
+    border: 1px solid rgba(0, 255, 163, 0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #e0e0e0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.terminal-btn:hover:not(:disabled) {
+    background: rgba(0, 255, 163, 0.12);
+    border-color: var(--accent-green);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 255, 163, 0.1);
+}
+
+.terminal-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.terminal-btn--clicked {
+    animation: terminal-btn-press 0.32s ease;
+    border-color: var(--accent-green);
+    background: rgba(0, 255, 163, 0.15);
+}
+
+.terminal-btn:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+@keyframes terminal-btn-press {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(0.97);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.terminal-btn .prompt {
     color: var(--accent-green);
     margin-right: 10px;
     font-weight: 700;
 }
 
-.terminal-input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    flex: 1;
-    outline: none;
+.terminal-btn .btn-label {
+    color: var(--accent-green);
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(0, 255, 163, 0.2);
+}
+
+.terminal-btn .btn-desc {
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.terminal-btn:hover .btn-desc {
+    color: #b0b0b0;
+}
+
+/* Terminal Loader Styles */
+.terminal-loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.loader-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-green);
+    text-shadow: 0 0 5px rgba(0, 255, 163, 0.5);
+}
+
+.loader-bar-container {
+    width: 100%;
+    height: 20px;
+    border: 2px solid var(--accent-green);
+    padding: 2px;
+    background: rgba(0, 20, 10, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 163, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-bar {
+    height: 100%;
+    background-color: var(--accent-green);
+    box-shadow: 0 0 15px var(--accent-green);
+    transition: width 0.15s linear;
+    width: 0%;
+}
+
+/* Scanline effect for loader bar */
+.loader-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(-45deg,
+            rgba(255, 255, 255, 0.2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.2) 75%,
+            transparent 75%,
+            transparent);
+    z-index: 1;
+    background-size: 20px 20px;
+    animation: move 1s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+.loader-status {
+    margin-top: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 768px) {
@@ -113,13 +264,11 @@
         width: 100%;
         height: auto;
         min-height: 350px;
-        /* Reduced min-height */
         max-height: 500px;
     }
 
     .terminal-body {
         padding: 15px;
         font-size: 0.8rem;
-        /* Smaller font */
     }
 }
