@@ -35,22 +35,43 @@ const Terminal = () => {
     const [clickedId, setClickedId] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [progress, setProgress] = useState(0);
+    const intervalRef = React.useRef(null);
+    const timeoutRef = React.useRef(null);
+    const terminalBodyRef = React.useRef(null);
+
+    // Cleanup on unmount
+    useEffect(() => {
+        if (terminalBodyRef.current) {
+            terminalBodyRef.current.scrollTop = 0;
+        }
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, []);
 
     const handleClick = (cmd) => {
+        if (clickedId !== null) return; // Prevent double clicks
+
         setClickedId(cmd.id);
         setIsLoading(true);
         setProgress(0);
 
         // Simulate loading process
         let currentProgress = 0;
-        const interval = setInterval(() => {
+
+        // Clear any existing intervals just in case
+        if (intervalRef.current) clearInterval(intervalRef.current);
+
+        intervalRef.current = setInterval(() => {
             currentProgress += Math.floor(Math.random() * 15) + 5;
             if (currentProgress >= 100) {
                 currentProgress = 100;
-                clearInterval(interval);
-                setTimeout(() => {
+                clearInterval(intervalRef.current);
+
+                timeoutRef.current = setTimeout(() => {
                     navigate(cmd.path);
-                }, 500); // Small delay after 100% to show completion
+                }, 500);
             }
             setProgress(currentProgress);
         }, 150);
@@ -66,7 +87,7 @@ const Terminal = () => {
                 </div>
                 <div className="title">ftc-terminal</div>
             </div>
-            <div className="terminal-body">
+            <div className="terminal-body" ref={terminalBodyRef}>
                 {isLoading ? (
                     <TerminalLoader progress={progress} />
                 ) : (
@@ -83,7 +104,10 @@ const Terminal = () => {
                                     key={cmd.id}
                                     type="button"
                                     className={`terminal-btn ${clickedId === cmd.id ? 'terminal-btn--clicked' : ''}`}
-                                    onClick={() => handleClick(cmd)}
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Prevent default touch actions behavior
+                                        handleClick(cmd);
+                                    }}
                                     disabled={clickedId !== null}
                                 >
                                     <span className="prompt">$ </span>
