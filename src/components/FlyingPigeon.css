@@ -19,9 +19,3 @@
 .pigeon-container:hover .pigeon-emoji {
     transform: scale(1.1);
 }
-
-@media (max-width: 768px) {
-    .pigeon-container {
-        display: none;
-    }
-}
