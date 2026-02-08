@@ -37,12 +37,6 @@ const Connect = () => {
                     <p>ftc.kjsse</p>
                 </a>
 
-                <a href="mailto:ftc@kjsse.edu" className="connect-card">
-                    <Mail size={48} color="#00ffa3" />
-                    <h3>Email</h3>
-                    <p>ftc@kjsse.edu</p>
-                </a>
-
                 <a href="https://www.google.com/maps/search/K+J+Somaiya+College+of+Engineering" target="_blank" rel="noopener noreferrer" className="connect-card">
                     <MapPin size={48} color="#00ffa3" />
                     <h3>Location</h3>
