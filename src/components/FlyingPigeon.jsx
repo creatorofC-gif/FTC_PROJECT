@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './FlyingPigeon.css';
 
 const FlyingPigeon = () => {
     const birdRef = useRef(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         // Flight path animation

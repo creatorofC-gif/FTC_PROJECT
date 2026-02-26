@@ -8,6 +8,7 @@ const commands = [
     { id: 'events', label: 'events', path: '/events', desc: 'Upcoming hackathons & workshops' },
     { id: 'connect', label: 'connect', path: '/connect', desc: 'Socials & contact info' },
     { id: 'tools', label: 'tools', path: '/tools', desc: 'Financial calculators & simulators' },
+    { id: 'research', label: 'research', path: '/research', desc: 'Documents & research hub' },
 ];
 
 const TerminalLoader = ({ progress }) => {

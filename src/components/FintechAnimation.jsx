@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FintechAnimation.css';
 
@@ -58,6 +58,16 @@ const FintechAnimation = () => {
 
         return path;
     };
+
+    const particles = useMemo(() => {
+        const arr = [];
+        for (let i = 0; i < 30; i++) {
+            const left = (i * 7) % 100;
+            const delay = (i % 6) * 0.25;
+            arr.push({ left, delay });
+        }
+        return arr;
+    }, []);
 
     return (
         <div className="fintech-container">
@@ -123,13 +133,13 @@ const FintechAnimation = () => {
 
                 {/* Particle effects */}
                 <div className="particles">
-                    {Array.from({ length: 30 }).map((_, i) => (
+                    {particles.map((p, i) => (
                         <div
                             key={i}
                             className="particle"
                             style={{
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 2}s`,
+                                left: `${p.left}%`,
+                                animationDelay: `${p.delay}s`,
                             }}
                         />
                     ))}

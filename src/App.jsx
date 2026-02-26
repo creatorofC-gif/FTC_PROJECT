@@ -10,6 +10,7 @@ import Domains from './components/Domains';
 import Events from './components/Events';
 import Connect from './components/Connect';
 import Tools from './components/Tools';
+import Research from './components/Research';
 
 const Home = () => {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/connect" element={<Connect />} />
         <Route path="/tools" element={<Tools />} />
+        <Route path="/research" element={<Research />} />
       </Routes>
     </div>
   );

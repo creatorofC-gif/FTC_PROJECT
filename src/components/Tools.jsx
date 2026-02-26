@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import Background from './Background';
@@ -52,36 +52,19 @@ const SipCalculator = ({ refProp }) => {
     const [monthly, setMonthly] = useState(5000);
     const [years, setYears] = useState(10);
     const [rate, setRate] = useState(12);
-    const [data, setData] = useState({ inv: 0, val: 0, path: "" });
-
-    useEffect(() => {
+    const data = useMemo(() => {
         const r = rate / 12 / 100;
         const n = years * 12;
         const inv = monthly * n;
         const val = monthly * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-
-        // Generate Path for SVG
-        // We want a curve from (0, height) to (100, 0) basically
-        // But realistically: y = x (linear for invested) vs y = x^exp (curve for value)
-        // Simplified visual: Just the Value Curve
-        // Points: Start (0, 100) -> End (100, 0) in SVG coord system (upside down)
-
-        // Let's make a few points for the curve
         const points = [];
         const totalPoints = 10;
         for (let i = 0; i <= totalPoints; i++) {
-            const t = i / totalPoints; // 0 to 1
-            // Growth formula factor
-            const growthFactor = Math.pow(1 + r, n * t);
-            // Normalized height (0 to 1)
-            // This is tricky visually, let's just make a nice exponential curve based on rate
-            // y = x^2 approx for visual
-            const yVal = Math.pow(t, 2); // Simple ease
-            points.push(`${t * 100},${100 - (yVal * 80)}`); // Keep some padding
+            const t = i / totalPoints;
+            const yVal = Math.pow(t, 2);
+            points.push(`${t * 100},${100 - (yVal * 80)}`);
         }
-
-        setData({ inv, val, path: points.join(" ") });
-
+        return { inv, val, path: points.join(" ") };
     }, [monthly, years, rate]);
 
     return (
