@@ -39,7 +39,6 @@ const FlyingPigeon = () => {
         e.stopPropagation();
         // Redirect to LinkedIn profile
         window.open(
-            'https://www.linkedin.com/in/shrish-alva-a3135a31b/?originalSubdomain=in',
             '_blank',
             'noopener,noreferrer'
         );
