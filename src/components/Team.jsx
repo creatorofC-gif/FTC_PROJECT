@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import Background from './Background';
-import FlyingPigeon from './FlyingPigeon';
 import './PageStyles.css';
 
 const Team = () => {
@@ -101,7 +100,6 @@ const Team = () => {
                 </div>
                 <Background />
             </div>
-            <FlyingPigeon />
         </>
     );
 };
